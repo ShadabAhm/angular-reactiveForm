@@ -1,0 +1,55 @@
+<div class="form-container">
+  {{modelTrainingForm.value|json}}
+
+  <button type="button" (click)="addItem()" class="add-row-btn">Add Row</button>
+  <form [formGroup]="modelTrainingForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="items">
+      <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="form-row">
+        <div class="form-field">
+          <input formControlName="firstName" placeholder="Enter first name" />
+        </div>
+
+        <div class="form-field">
+          <input formControlName="lastName" placeholder="Enter last name" />
+        </div>
+
+        <div class="form-field">
+          <input formControlName="email" placeholder="Enter email" />
+        </div>
+
+        <div class="form-field">
+          <input formControlName="userName" placeholder="Enter Username" />
+        </div>
+
+        <div class="form-field">
+          <select formControlName="dropdown1" (change)="onDropdown1Change($event, i)">
+            <option value="">Select Library</option>
+            <option value="h2o">H2O</option>
+            <option value="scikit">Scikit</option>
+            <option value="weka">Weka</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <select formControlName="dropdown2" (change)="onDropdown2Change($event, i)">
+            <option value="">Select Type</option>
+            <option *ngFor="let option of dropdown2Options[i]" [value]="option">{{ option }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <select formControlName="dropdown3">
+            <option value="">Select Algoritham</option>
+            <option *ngFor="let option of dropdown3Options[i]" [value]="option">{{ option }}</option>
+          </select>
+        </div>
+
+        <button type="button" (click)="removeItem(i)" class="remove-btn">Remove</button>
+      </div>
+    </div>
+    
+    <button type="submit" class="submit-btn">Submit</button>
+
+  </form>
+</div>
+
