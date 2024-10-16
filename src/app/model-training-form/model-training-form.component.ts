@@ -53,7 +53,7 @@ export class ModelTrainingFormComponent {
       this.dropdown2Options.splice(index, 1);
       this.dropdown3Options.splice(index, 1);
     } else {
-      alert('At least one item must be present.');
+      alert('At least one row must be present.');
     }
 
   }
@@ -83,7 +83,8 @@ export class ModelTrainingFormComponent {
     const selectedValue = event.target.value;
 
     if (selectedValue === 'Classification') {
-      this.dropdown3Options[index] = ['NaiveBayesMultinomial','AdaBoost', 'SupportVectorMachines', 'ExtraTrees', 'Bagging', 'LogisticRegression', 'DecisionTrees', 'XGradientBoosting',
+      this.dropdown3Options[index] = ['NaiveBayesMultinomial','AdaBoost', 'SupportVectorMachines', 
+        'ExtraTrees', 'Bagging', 'LogisticRegression', 'DecisionTrees', 'XGradientBoosting',
          'RandomForest','GradientBoostingMachines','KNearestNeighbour'];
     } else if (selectedValue === 'Regression') {
       this.dropdown3Options[index] = ['AdaBoost', 'SupportVectorMachines', 'ExtraTrees', 'Bagging', 'LinearRegression', 'DecisionTrees', 'XGradientBoosting', 'RandomForest', 'MultiLayerPerceptron'];
